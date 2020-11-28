@@ -1,8 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-    return <>Application Software Development Lab Project</>;
+    return (
+        <div class='container'>
+            Application Software Development Lab Project
+        </div>
+    );
 }
 
 export default App;

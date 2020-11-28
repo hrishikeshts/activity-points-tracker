@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import "./fonts/MazzardH/MazzardH-Black.woff2";
 import "./fonts/MazzardH/MazzardH-BlackItalic.woff2";
 import "./fonts/MazzardH/MazzardH-Bold.woff2";
@@ -18,6 +19,8 @@ import "./fonts/MazzardH/MazzardH-SemiBold.woff2";
 import "./fonts/MazzardH/MazzardH-SemiBoldItalic.woff2";
 import "./fonts/MazzardH/MazzardH-Thin.woff2";
 import "./fonts/MazzardH/MazzardH-ThinItalic.woff2";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
