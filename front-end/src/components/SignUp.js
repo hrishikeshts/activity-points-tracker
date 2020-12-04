@@ -40,7 +40,7 @@ function SignUp() {
             </div>
             <div className='d-flex justify-content-center'>
                 <div className='user-type-active'>Student</div>
-                <div className='user-type'>Teacher</div>
+                
             </div>
             <div className='mx-auto py-4 log-box-main'>
                 {/* <div className='log-title'>
