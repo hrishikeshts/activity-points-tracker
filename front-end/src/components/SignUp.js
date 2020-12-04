@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TitleSVG from "../TitleSVG";
@@ -9,11 +10,14 @@ function SignUp() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const [access, setAccess] = useState();
 
     const register = (e) => {
+      
         e.preventDefault();
 
         Axios.post("http://localhost:8001/signup", {
+          
             username: username,
             password: password,
             email: email,
@@ -21,8 +25,18 @@ function SignUp() {
             address: address,
         }).then((response) => {
             console.log(response);
+            if(response.data.auth == true){
+                setAccess(true);
+            }
+            else{
+                setAccess(false);
+            }
         });
+        
     };
+    if(access){
+        return <Redirect to="/home" />
+    }
 
     return (
         <div className='log-page'>

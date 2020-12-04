@@ -7,9 +7,14 @@ const Cors = require('cors');
 const sequelize = require('./util/database');
 const user = require('./models/user');
 const app = express();
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 // const jwt = require('jsonwebtoken');
 
 const multer = require('multer');
+const { response } = require('express');
 
 //MULTER
 // const filestorage = multer.diskStorage({
@@ -34,7 +39,23 @@ const multer = require('multer');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use('/images',express.static(path.join(__dirname,'images')));
-app.use(Cors());
+app.use(Cors({
+    origin: ["http://localhost:3000"],
+    methods:["GET", "POST"],
+    credentials: true
+}));
+
+app.use(cookieParser());
+app.use(session({
+    key:"username",
+    secret:"appu703453",
+    resave:false,
+    saveUninitialized: false,
+    cookie:{
+        expires: 60 * 60 * 24,
+    },
+}));
+
 app.use(express.json());
 // app.use(multer({storage:filestorage,fileFilter:fileFilter}).single('data'));
 
@@ -49,45 +70,64 @@ app.use(function(req,res,next){
 
 app.post('/signup',(req,res,next)=>{
 
-    // console.log(req.body);
-    user.create({
+            const password = req.body.password;
 
-        // name:req.body.name,
-        email:req.body.email,
-        username:req.body.username,
-        password:req.body.password,
-        address:req.body.address,
-        phoneno:req.body.phoneno,
+            bcrypt.hash(password,saltRounds, (err, hash) =>{
+                user.create({
 
-    }).then(r=>res.status(200).json({message:"signup succesfull"})).catch(err=>{
-        err.statusCode = 403;
-        err.message = "username already registered choose another";
-        next(err);
-      });
+                    // name:req.body.name,
+                    email:req.body.email,
+                    username:req.body.username,
+                    password:hash,
+                    address:req.body.address,
+                    phoneno:req.body.phoneno,
+            
+                }).then(r=>res.status(200).json({message:"signup succesfull",auth:true})).catch(err=>{
+                    err.statusCode = 403;
+                    err.message = "username already registered!! choose another";
+                    res.send(err.message);
+                    next(err);
+                  });
+            })
+            
+    
 
 });
 app.post('/login',(req,res)=>{
-    user.findByPk(req.body.username).then(user=>
-        {
-           
-            if(user){
-           if(user.password ===req.body.password){
 
-              
+    
+        user.findByPk(req.body.username).then(user=>
+            {
                
-             res.status(200).json({auth:true});
-
-           }
-        else{
-            res.status(401).send({status:401});
-        }}
-        else{
-       res.status(404).send({status:404});
-        }
-    }).catch(err=>console.log(err))
-   
-
+                if(user){
+               bcrypt.compare(req.body.password, user.password, (err, response) => {
+                   if(response){
+                    
+                    req.session.user = user;
+                    // console.log(req.session.user);
+                    res.status(200).json({auth:true});
+    
+                   }else{
+                    res.send({message:"wrong combinations!!"});
+                   }
+               })
+            }
+            else{
+        //    res.status(404).send({message:"No user found!!"});
+           res.send({message:"No user found!!"});
+            }
+        }).catch(err=>console.log(err));
+    
 });
+
+app.get('/login', (req, res) => {
+    if (req.session.user){
+        res.send({loggedIn: true, user: req.session.user});
+    }else{
+        res.send({loggedIn:false});
+    }
+});
+
 app.get('/:username/page',(req,res,next)=>{
     user.findByPk(req.params.username).then(user=>{
         res.status(200).json({name:user.name,email:user.email,address:user.address,phoneno:user.phoneno,username:user.username,image:user.image});
@@ -95,13 +135,13 @@ app.get('/:username/page',(req,res,next)=>{
 
 });
 
-app.use((error,req,res,next)=>{
-    console.log(error);
-    const status = error.statusCode || 500;
-    const message = error.message;
-    res.status(status).send();
-    console.log(status);
-});
+// app.use((error,req,res,next)=>{
+//     console.log(error);
+//     const status = error.statusCode || 500;
+//     const message = error.message;
+//     res.status(status).send();
+//     console.log(status);
+// });
 
 app.post('/:username/images',(req,res)=>{
     user.findByPk(req.params.username).then(user=>{
