@@ -6,7 +6,9 @@ function Login(){
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [access, setAccess] = useState(false);
+    const [access, setAccess] = useState();
+
+    // Axios.defaults.withCredentials = true;
 
     const login = (e) => {
 
@@ -16,11 +18,22 @@ function Login(){
             username: username,
             password: password,
         }).then((response) => {
+            console.log(response);
             if(response.data.auth == true){
                 setAccess(true);
             }
+            else{
+                setAccess(false);
+            }
         });
     };
+
+    // useEffect(() => {
+    //     Axios.get("http://localhost:8001/login").then((response) => {
+    //         console.log(response);
+    //     })
+    // }, []);
+
     if(access){
         return <Redirect to="/home" />
     }
@@ -75,6 +88,7 @@ function Login(){
                                 
                             
                         </form>
+                       
                         <Link to="/signup">Sign up</Link>
                     </div>
                     

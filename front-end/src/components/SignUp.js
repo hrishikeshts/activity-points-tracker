@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Axios from 'axios';
 
 
@@ -10,12 +10,12 @@ function SignUp() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const [access, setAccess] = useState();
 
     const register = (e) => {
+            e.preventDefault();
 
-        e.preventDefault();
-
-        Axios.post('http://localhost:8001/signup', {
+            Axios.post('http://localhost:8001/signup', {
             username: username,
             password: password,
             email: email,
@@ -23,8 +23,18 @@ function SignUp() {
             address: address
         }).then((response) => {
             console.log(response);
+            if(response.data.auth == true){
+                setAccess(true);
+            }
+            else{
+                setAccess(false);
+            }
         });
+        
     };
+    if(access){
+        return <Redirect to="/home" />
+    }
 
 
     return (
@@ -42,7 +52,7 @@ function SignUp() {
                     <b>SignUp</b>
                 </div>
                 <div>
-                    <form onSubmit={register}>
+                    <form className="form-style" onSubmit={register}>
 
                         <div className="input-box">
                             <input
@@ -65,10 +75,11 @@ function SignUp() {
                                 type="text"
                                 placeholder="Username"
                                 name="name"
+                                required
                                 onChange={(e) => {
                                     setUsername(e.target.value);
                                 }}
-                                required
+                                
                             >
 
                             </input>
@@ -81,10 +92,11 @@ function SignUp() {
                                 type="password"
                                 placeholder="Password"
                                 name="password"
+                                required
                                 onChange={(e) => {
                                     setPassword(e.target.value);
                                 }}
-                                required
+                                
                             >
 
                             </input>
@@ -97,10 +109,11 @@ function SignUp() {
                                 type="text"
                                 placeholder="Address"
                                 name="address"
+                                required
                                 onChange={(e) => {
                                     setAddress(e.target.value);
                                 }}
-                                required
+                                
                             >
 
                             </input>
@@ -114,10 +127,11 @@ function SignUp() {
                                 placeholder="Mobile Number"
                                 name="phone"
                                 pattern="[5-9][0-9]{9}"
+                                required
                                 onChange={(e) => {
                                     setPhone(e.target.value);
                                 }}
-                                required
+                                
                             >
 
                             </input>
