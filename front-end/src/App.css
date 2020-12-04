@@ -1,0 +1,61 @@
+.log-page-title {
+    width: 12rem;
+}
+
+.log-box-main {
+    background: #eef2ff;
+    border-radius: 20px;
+    width: 75%;
+}
+
+.form-control {
+    background: #dde1ed;
+    color: black;
+    border: 0;
+    border-radius: 10px;
+    width: 100%;
+    transition: all 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    background: #cfd4e5;
+    box-shadow: none;
+    transition: all 0.15s ease-in-out;
+}
+
+.login-btn {
+    background: #5078fa;
+    color: white;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.login-btn:hover {
+    background: #232e71;
+    color: white;
+}
+
+.sign-up {
+    color: #b3b3bb;
+}
+
+.sign-up a {
+    color: #232e71;
+}
+
+.fig-container {
+    background: url("./graphics/bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+.login-fig {
+    background: url("./graphics/Data-rafiki.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.5;
+    height: 300px;
+    margin: 0;
+}
