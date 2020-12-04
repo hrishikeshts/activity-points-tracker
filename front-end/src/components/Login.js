@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import TitleSVG from "../TitleSVG";
-import DataRafiki from "../graphics/Data-rafiki.svg";
 import Axios from "axios";
 
 function Login() {
@@ -18,16 +17,14 @@ function Login() {
             username: username,
             password: password,
         }).then((response) => {
-          
             if (response.data.auth == true) {
                 setAccess(true);
-            }
-            else{
+            } else {
                 setAccess(false);
             }
         });
     };
-  
+
     if (access) {
         return <Redirect to='/home' />;
     }
@@ -36,6 +33,10 @@ function Login() {
         <div className='log-page'>
             <div className='mx-auto m-5 user-select-none log-page-title'>
                 <TitleSVG />
+            </div>
+            <div className='d-flex justify-content-center'>
+                <div className='user-type-active'>Student</div>
+                <div className='user-type'>Teacher</div>
             </div>
             <div className='mx-auto py-4 log-box-main'>
                 {/* <div
