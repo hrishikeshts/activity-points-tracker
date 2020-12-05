@@ -101,11 +101,19 @@ app.post('/signup',(req,res,next)=>{
                     address:req.body.address,
                     phoneno:req.body.phoneno,
             
-                }).then(r=>res.status(200).json({message:"signup succesfull",auth:true})).catch(err=>{
-                    err.statusCode = 403;
-                    err.message = "username already registered!! choose another";
-                    res.send(err.message);
-                    next(err);
+                }).then(r=>{
+
+                        const username = user.username;
+                        const token = jwt.sign({username}, process.env.SECRET, {
+                            expiresIn: 7200,
+                        });
+                        res.status(200).json({message:"signup succesfull",auth:true, token:token})
+                    })
+                    .catch(err=>{
+                        err.statusCode = 403;
+                        err.message = "username already registered!! choose another";
+                        res.send(err.message);
+                        next(err);
                   });
             })
             
@@ -114,7 +122,6 @@ app.post('/signup',(req,res,next)=>{
 });
 app.post('/login',(req,res)=>{
 
-    
         user.findByPk(req.body.username).then(user=>
             {
                
@@ -125,9 +132,9 @@ app.post('/login',(req,res)=>{
                     
                     req.session.user = user;
 
-                    const id = user.id;
-                    const token = jwt.sign({id}, process.env.SECRET, {
-                        expiresIn: 300,
+                    const username = user.username;
+                    const token = jwt.sign({username}, process.env.SECRET, {
+                        expiresIn: 7200,
                     });
                     // console.log(req.session.user);
                     res.status(200).json({auth:true, token: token});
@@ -156,10 +163,34 @@ app.get('/isAuth', verifyJWT ,(req, res) => {
 //         res.send({loggedIn:false});
 //     }
 // });
+app.get('/:username/user',verifyJWT,(req,res,next)=>{
+    user.findByPk(req.params.username).then(user=>{
+        res.status(200).json({
+
+            // name:user.name,
+            email:user.email,
+            address:user.address,
+            phoneno:user.phoneno,
+            username:user.username,
+            // image:user.image
+        });
+
+    }).catch(err=>{console.log(err)})
+
+});
 
 app.get('/:username/page',(req,res,next)=>{
     user.findByPk(req.params.username).then(user=>{
-        res.status(200).json({name:user.name,email:user.email,address:user.address,phoneno:user.phoneno,username:user.username,image:user.image});
+        res.status(200).json({
+
+            name:user.name,
+            email:user.email,
+            address:user.address,
+            phoneno:user.phoneno,
+            username:user.username,
+            image:user.image
+        });
+
     }).catch(err=>{console.log(err)})
 
 });
