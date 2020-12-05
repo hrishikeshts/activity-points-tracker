@@ -21,8 +21,8 @@ function SignUp() {
             phoneno: phone,
             address: address,
         }).then((response) => {
-            console.log(response);
-            if (response.data.auth == true) {
+
+            if (response.data.auth) {
                 setAccess(true);
             } else {
                 setAccess(false);

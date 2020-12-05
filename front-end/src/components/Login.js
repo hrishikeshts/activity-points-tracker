@@ -6,9 +6,12 @@ import Axios from "axios";
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [access, setAccess] = useState();
+    const [access, setAccess] = useState(false);
+    const [message, setMessage] = useState("");
+
 
     // Axios.defaults.withCredentials = true;
+    
 
     const login = (e) => {
         e.preventDefault();
@@ -17,10 +20,14 @@ function Login() {
             username: username,
             password: password,
         }).then((response) => {
-            if (response.data.auth == true) {
+            if (response.data.auth) {
+
+                localStorage.setItem("token", response.data.token);
                 setAccess(true);
+
             } else {
                 setAccess(false);
+                setMessage(response.data.message);
             }
         });
     };
@@ -83,7 +90,10 @@ function Login() {
                         >
                             Sign in
                         </button>
+                        <p style={{color:"red",textAlign:"center",fontSize:12}}>{message}</p>
                     </div>
+
+                    
                 </form>
             </div>
             <div className='text-center m-4 sign-up'>
