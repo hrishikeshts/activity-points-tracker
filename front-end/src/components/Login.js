@@ -33,7 +33,10 @@ function Login() {
     };
 
     if (access) {
-        return <Redirect to='/home' />;
+        return <Redirect to={{
+            pathname: "/home",
+            state: { username: username } // your data array of objects
+          }} />;
     }
 
     return (
@@ -90,8 +93,9 @@ function Login() {
                         >
                             Sign in
                         </button>
-                        <p style={{color:"red",textAlign:"center",fontSize:12}}>{message}</p>
+                        
                     </div>
+                    <p style={{color:"red",textAlign:"center",fontSize:12}}>{message}</p>
 
                     
                 </form>

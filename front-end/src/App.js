@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
-import Home from "./components/Home";
 import "./App.css";
 import UserOnboarding from "./components/UserOnboarding";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Home from './components/Home';
+import Profile from "./components/Profile";
 import Logout from "./components/Logout";
 import ShitCheck from "./components/ShitCheck";
 
@@ -19,15 +20,13 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/' component={Login} />
-                    <Route
-                        exact
-                        path='/getting-started'
-                        component={UserOnboarding}
-                    />
+                    
+                    <Route exact path='/' component={UserOnboarding}/>
+                    <Route path='/login' component={Login} />
                     <Route path='/signup' component={SignUp} />
                     <Route path='/shit' component={ShitCheck} />
                     <Route path='/home' component={Home} />
+                    <Route path='/profile' component={Profile} />
                     {/* <Route  path="/profile" component={Profile}/>
           <Route path="/checkout" component={Checkout}/>
           <Route path="/payment" component={Payment}/>

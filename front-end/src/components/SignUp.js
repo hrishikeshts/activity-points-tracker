@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import TitleSVG from "../TitleSVG";
 import Axios from "axios";
@@ -10,6 +10,7 @@ function SignUp() {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [access, setAccess] = useState();
+    const [message, setMessage] = useState("");
 
     const register = (e) => {
         e.preventDefault();
@@ -21,15 +22,25 @@ function SignUp() {
             phoneno: phone,
             address: address,
         }).then((response) => {
+            
             if (response.data.auth) {
+
+                localStorage.setItem("token", response.data.token);
                 setAccess(true);
+
             } else {
+                
                 setAccess(false);
+                setMessage(response.data);
+        
             }
         });
     };
     if (access) {
-        return <Redirect to='/home' />;
+        return <Redirect to={{
+            pathname: "/home",
+            state: { username: username } // your data array of objects
+          }} />;
     }
 
     return (
@@ -117,11 +128,12 @@ function SignUp() {
                             Create account
                         </button>
                     </div>
+                        <p style={{color:"red", fontSize:12,textAlign:"center"}}>{message}</p>
                 </form>
             </div>
             <div className='text-center m-4 onboarding-desc'>
                 Already have an account?&nbsp;
-                <Link to='/'>Log in</Link>
+                <Link to='/login'>Log in</Link>
             </div>
             <div className='w-100 fig-container'>
                 <figure className='opa-50 data-rafiki-1'></figure>

@@ -79,7 +79,7 @@ export default function UserOnboarding() {
                 className='btn mx-auto my-5 start-btn d-block col-7'
                 type='submit'
             >
-                <Link to='/' className='no-underline'>
+                <Link to='/login' className='no-underline'>
                     Get Started
                 </Link>
             </button>
