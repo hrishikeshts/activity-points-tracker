@@ -24,33 +24,34 @@ const UserOnboardingArray = [
 
 export default function UserOnboarding() {
     return (
-        <div className='vh-100 pt-5'>
-            <div
-                id='carouselExampleIndicators'
-                className='carousel slide my-auto'
-                data-ride='carousel'
-            >
-                <ol className='carousel-indicators'>
-                    {UserOnboardingArray.map((UserOnboardingObj) => {
-                        return (
-                            <UserOnboardingLi
-                                key={UserOnboardingObj.id}
-                                {...UserOnboardingObj}
-                            />
-                        );
-                    })}
-                </ol>
-                <div className='carousel-inner'>
-                    {UserOnboardingArray.map((UserOnboardingObj) => {
-                        return (
-                            <UserOnboardingContent
-                                key={UserOnboardingObj.id}
-                                {...UserOnboardingObj}
-                            />
-                        );
-                    })}
-                </div>
-                {/* <a
+        <div className='min-vh-100 overflow-hidden'>
+            <div className='row justify-content-end h-100 px-md-5'>
+                <div
+                    id='carouselExampleIndicators'
+                    className='w-100 carousel slide my-auto'
+                    data-ride='carousel'
+                >
+                    <ol className='carousel-indicators'>
+                        {UserOnboardingArray.map((UserOnboardingObj) => {
+                            return (
+                                <UserOnboardingLi
+                                    key={UserOnboardingObj.id}
+                                    {...UserOnboardingObj}
+                                />
+                            );
+                        })}
+                    </ol>
+                    <div className='carousel-inner'>
+                        {UserOnboardingArray.map((UserOnboardingObj) => {
+                            return (
+                                <UserOnboardingContent
+                                    key={UserOnboardingObj.id}
+                                    {...UserOnboardingObj}
+                                />
+                            );
+                        })}
+                    </div>
+                    {/* <a
                     className='carousel-control-prev'
                     href='#carouselExampleIndicators'
                     role='button'
@@ -74,15 +75,18 @@ export default function UserOnboarding() {
                     ></span>
                     <span className='sr-only'>Next</span>
                 </a> */}
+                </div>
+                <div className='w-100 m-5 pt-3 pt-md-1'>
+                    <Link to='/login' className='no-underline'>
+                        <button
+                            className='btn mx-auto start-btn d-block col-5'
+                            type='submit'
+                        >
+                            Get Started
+                        </button>
+                    </Link>
+                </div>
             </div>
-            <button
-                className='btn mx-auto my-5 start-btn d-block col-7'
-                type='submit'
-            >
-                <Link to='/login' className='no-underline'>
-                    Get Started
-                </Link>
-            </button>
         </div>
     );
 }
@@ -90,7 +94,7 @@ export default function UserOnboarding() {
 function UserOnboardingContent({ id, title, desc }) {
     return (
         <div className={id === 1 ? "carousel-item active" : "carousel-item"}>
-            <div className='w-100 user-select-none fig-container'>
+            <div className='w-100 user-select-none bg-container'>
                 <figure className={"data-rafiki-" + id}></figure>
                 <div className=' text-center m-0 dark-blue-text'>
                     <div className='mt-5 title'>{title}</div>
@@ -106,7 +110,7 @@ function UserOnboardingLi({ id }) {
         <li
             data-target='#carouselExampleIndicators'
             data-slide-to={id - 1}
-            className={id === 1 ? "m-4 active" : "m-4"}
+            className={id === 1 ? "m-2 m-md-3 active" : "m-2 m-md-3"}
         >
             <div></div>
         </li>

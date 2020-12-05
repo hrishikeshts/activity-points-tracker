@@ -9,7 +9,8 @@
 }
 
 .carousel-indicators {
-    bottom: -50px;
+    bottom: -80px;
+    padding-bottom: 30px;
 }
 
 .carousel-indicators li {
@@ -18,9 +19,5 @@
     height: 1px;
     min-height: 0 !important;
     width: 21px;
+    transform: scale(0.5);
 }
-
-.start-btn a {
-    color: white;
-}
-

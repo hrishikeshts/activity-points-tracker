@@ -8,7 +8,7 @@
     color: #232e71;
     font-weight: 500;
     padding: 0.75rem 7.5%;
-    margin: 0 2.5%;
+    margin: 0 2vw;
     border-radius: 15px 15px 0 0;
 }
 
@@ -19,7 +19,7 @@
 .log-box-main {
     background: #eef2ff;
     border-radius: 20px;
-    width: 75%;
+    width: 80%;
 }
 
 .form-control {
@@ -63,15 +63,9 @@
     color: #232e71;
 }
 
-.fig-container {
-    background: url("./graphics/bg.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
-}
-
-.data-rafiki-1 {
-    background: url("./graphics/Data-rafiki-1.svg");
+.data-rafiki-1,
+.login-data-rafiki {
+    background: url("./graphics/Data-rafiki-1.png");
 }
 
 .data-rafiki-2 {
@@ -85,10 +79,35 @@
 .data-rafiki,
 .data-rafiki-1,
 .data-rafiki-2,
-.data-rafiki-3 {
+.data-rafiki-3,
+.login-data-rafiki {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 300px;
     margin: 0;
+    height: 300px;
+}
+
+.bg-container {
+    background: url("./graphics/bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+}
+
+.login-data-rafiki {
+    height: 70vw;
+}
+
+@media (min-width: 768px) {
+    .bg-container {
+        background: url("./graphics/bg-md.png");
+        background-repeat: repeat-x;
+        background-size: 100% 100%;
+        background-position: bottom;
+    }
+
+    .login-data-rafiki {
+        height: 400px;
+    }
 }
