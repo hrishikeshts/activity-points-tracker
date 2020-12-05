@@ -1,0 +1,25 @@
+.dark-blue-text {
+    border-radius: calc(5vw + 20px) calc(5vw + 20px) 0 0;
+}
+
+.carousel-item .title {
+    font-size: 1.4rem;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.carousel-indicators {
+    bottom: -50px;
+}
+
+.carousel-indicators li {
+    background: #5078fa;
+    border-radius: 100%;
+    height: 1px;
+    min-height: 0 !important;
+    width: 21px;
+}
+
+.start-btn a {
+    color: white;
+}

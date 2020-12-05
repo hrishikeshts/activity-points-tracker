@@ -2,8 +2,9 @@
     width: 12rem;
 }
 
-.user-type,
-.user-type-active {
+.dark-blue-text,
+.dark-blue-text-active {
+    background: white;
     color: #232e71;
     font-weight: 500;
     padding: 0.75rem 7.5%;
@@ -11,7 +12,7 @@
     border-radius: 15px 15px 0 0;
 }
 
-.user-type-active {
+.dark-blue-text-active {
     background: #eef2ff;
 }
 
@@ -36,28 +37,29 @@
     transition: all 0.15s ease-in-out;
 }
 
-.login-btn {
+.start-btn {
     background: #5078fa;
     color: white;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 20px;
     min-width: max-content;
 }
 
-.login-btn:hover {
+.start-btn:hover {
     background: #232e71;
     color: white;
 }
 
-.login-btn:focus {
+.start-btn:focus {
     box-shadow: none;
 }
 
-.sign-up {
+.onboarding-desc {
+    font-weight: normal;
     color: #b3b3bb;
 }
 
-.sign-up a {
+.onboarding-desc a {
     color: #232e71;
 }
 
@@ -68,12 +70,25 @@
     background-position: top;
 }
 
-.login-fig {
+.data-rafiki-1 {
     background: url("./graphics/Data-rafiki-1.svg");
+}
+
+.data-rafiki-2 {
+    background: url("./graphics/Data-rafiki-2.svg");
+}
+
+.data-rafiki-3 {
+    background: url("./graphics/Data-rafiki-3.svg");
+}
+
+.data-rafiki,
+.data-rafiki-1,
+.data-rafiki-2,
+.data-rafiki-3 {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    opacity: 0.5;
     height: 300px;
     margin: 0;
 }

@@ -37,13 +37,13 @@ function Login() {
     }
 
     return (
-        <div className='log-page'>
-            <div className='mx-auto m-5 user-select-none log-page-title'>
+        <div className='log-page user-select-none'>
+            <div className='mx-auto m-5 log-page-title'>
                 <TitleSVG />
             </div>
             <div className='d-flex justify-content-center'>
-                <div className='user-type-active'>Student</div>
-                <div className='user-type'>Teacher</div>
+                <div className='dark-blue-text-active'>Student</div>
+                <div className='dark-blue-text'>Teacher</div>
             </div>
             <div className='mx-auto py-4 log-box-main'>
                 {/* <div
@@ -85,7 +85,7 @@ function Login() {
                     </div>
                     <div className='my-2'>
                         <button
-                            className='btn mx-auto login-btn d-block col-7'
+                            className='btn mx-auto start-btn d-block col-7'
                             type='submit'
                         >
                             Sign in
@@ -96,12 +96,12 @@ function Login() {
                     
                 </form>
             </div>
-            <div className='text-center m-4 sign-up'>
+            <div className='text-center m-4 onboarding-desc'>
                 Don't have an account?&nbsp;
                 <Link to='/signup'>Sign up</Link>
             </div>
             <div className='w-100 fig-container'>
-                <figure className='login-fig'></figure>
+                <figure className='opa-50 data-rafiki-1'></figure>
             </div>
         </div>
     );

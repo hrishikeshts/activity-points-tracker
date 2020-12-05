@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import "./App.css";
+import UserOnboarding from "./components/UserOnboarding";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Logout from "./components/Logout";
@@ -19,6 +20,11 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/' component={Login} />
+                    <Route
+                        exact
+                        path='/getting-started'
+                        component={UserOnboarding}
+                    />
                     <Route path='/signup' component={SignUp} />
                     <Route path='/shit' component={ShitCheck} />
                     <Route path='/home' component={Home} />

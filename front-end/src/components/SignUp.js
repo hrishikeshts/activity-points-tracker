@@ -21,7 +21,6 @@ function SignUp() {
             phoneno: phone,
             address: address,
         }).then((response) => {
-
             if (response.data.auth) {
                 setAccess(true);
             } else {
@@ -34,13 +33,12 @@ function SignUp() {
     }
 
     return (
-        <div className='log-page'>
+        <div className='log-page user-select-none'>
             <div className='mx-auto m-5 user-select-none log-page-title'>
                 <TitleSVG />
             </div>
             <div className='d-flex justify-content-center'>
-                <div className='user-type-active'>Student</div>
-                
+                <div className='dark-blue-text-active'>Student</div>
             </div>
             <div className='mx-auto py-4 log-box-main'>
                 {/* <div className='log-title'>
@@ -113,7 +111,7 @@ function SignUp() {
                     </div>
                     <div className='my-2'>
                         <button
-                            className='btn mx-auto login-btn d-block col-7'
+                            className='btn mx-auto start-btn d-block col-7'
                             onClick={register}
                         >
                             Create account
@@ -121,12 +119,12 @@ function SignUp() {
                     </div>
                 </form>
             </div>
-            <div className='text-center m-4 sign-up'>
+            <div className='text-center m-4 onboarding-desc'>
                 Already have an account?&nbsp;
                 <Link to='/'>Log in</Link>
             </div>
             <div className='w-100 fig-container'>
-                <figure className='login-fig'></figure>
+                <figure className='opa-50 data-rafiki-1'></figure>
             </div>
         </div>
     );
