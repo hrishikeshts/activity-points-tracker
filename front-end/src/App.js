@@ -5,6 +5,7 @@ import "./App.css";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Logout from "./components/Logout";
+import ShitCheck from "./components/ShitCheck";
 
 // import Checkout from './components/Checkout';
 // import Products from './components/Products'
@@ -19,6 +20,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component={Login} />
                     <Route path='/signup' component={SignUp} />
+                    <Route path='/shit' component={ShitCheck} />
                     <Route path='/home' component={Home} />
                     {/* <Route  path="/profile" component={Profile}/>
           <Route path="/checkout" component={Checkout}/>

@@ -21,8 +21,8 @@ function SignUp() {
             phoneno: phone,
             address: address,
         }).then((response) => {
-            console.log(response);
-            if (response.data.auth == true) {
+
+            if (response.data.auth) {
                 setAccess(true);
             } else {
                 setAccess(false);
@@ -40,7 +40,7 @@ function SignUp() {
             </div>
             <div className='d-flex justify-content-center'>
                 <div className='user-type-active'>Student</div>
-                <div className='user-type'>Teacher</div>
+                
             </div>
             <div className='mx-auto py-4 log-box-main'>
                 {/* <div className='log-title'>

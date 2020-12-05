@@ -11,10 +11,9 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-// const jwt = require('jsonwebtoken');
-
+const jwt = require('jsonwebtoken');
 const multer = require('multer');
-const { response } = require('express');
+require("dotenv").config();
 
 //MULTER
 // const filestorage = multer.diskStorage({
@@ -59,6 +58,24 @@ app.use(session({
 app.use(express.json());
 // app.use(multer({storage:filestorage,fileFilter:fileFilter}).single('data'));
 
+const verifyJWT = (req,res,next) => {
+    const token = req.headers["x-access-token"];
+
+    if(!token) {
+        res.send("NO TOKEN FOUND!!");
+    }else {
+        jwt.verify(token, process.env.SECRET, (err, decoded) => {
+           if(err){
+                res.json({auth:false, message:"Failed to Auth"});
+           } else{
+               req.id = decoded.id;
+               next();
+           }
+        })
+    }
+};
+
+
 app.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Headers","Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,Authorization");
@@ -67,6 +84,8 @@ app.use(function(req,res,next){
     next();
 
 });
+
+
 
 app.post('/signup',(req,res,next)=>{
 
@@ -100,33 +119,43 @@ app.post('/login',(req,res)=>{
             {
                
                 if(user){
+                    
                bcrypt.compare(req.body.password, user.password, (err, response) => {
                    if(response){
                     
                     req.session.user = user;
+
+                    const id = user.id;
+                    const token = jwt.sign({id}, process.env.SECRET, {
+                        expiresIn: 300,
+                    });
                     // console.log(req.session.user);
-                    res.status(200).json({auth:true});
+                    res.status(200).json({auth:true, token: token});
     
                    }else{
-                    res.send({message:"wrong combinations!!"});
+                    res.json({auth:false,message:"wrong combinations!!"});
                    }
                })
             }
             else{
         //    res.status(404).send({message:"No user found!!"});
-           res.send({message:"No user found!!"});
+           res.json({auth:false,message:"No user found!!"});
             }
         }).catch(err=>console.log(err));
     
 });
 
-app.get('/login', (req, res) => {
-    if (req.session.user){
-        res.send({loggedIn: true, user: req.session.user});
-    }else{
-        res.send({loggedIn:false});
-    }
+app.get('/isAuth', verifyJWT ,(req, res) => {
+    res.send("User Is Authenticated");
 });
+
+// app.get('/login', (req, res) => {
+//     if (req.session.user){
+//         res.send({loggedIn: true, user: req.session.user});
+//     }else{
+//         res.send({loggedIn:false});
+//     }
+// });
 
 app.get('/:username/page',(req,res,next)=>{
     user.findByPk(req.params.username).then(user=>{
