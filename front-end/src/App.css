@@ -65,15 +65,15 @@
 
 .data-rafiki-1,
 .login-data-rafiki {
-    background: url("./graphics/Data-rafiki-1.png");
+    background: url("./graphics/data-rafiki-1.png");
 }
 
 .data-rafiki-2 {
-    background: url("./graphics/Data-rafiki-2.svg");
+    background: url("./graphics/data-rafiki-2.png");
 }
 
 .data-rafiki-3 {
-    background: url("./graphics/Data-rafiki-3.svg");
+    background: url("./graphics/data-rafiki-3.png");
 }
 
 .data-rafiki,
@@ -88,8 +88,8 @@
     height: 300px;
 }
 
-.bg-container {
-    background: url("./graphics/bg.png");
+.log-bg {
+    background: url("./graphics/log-bg.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom;
@@ -100,8 +100,8 @@
 }
 
 @media (min-width: 768px) {
-    .bg-container {
-        background: url("./graphics/bg-md.png");
+    .log-bg {
+        background: url("./graphics/log-bg-md.png");
         background-repeat: repeat-x;
         background-size: 100% 100%;
         background-position: bottom;

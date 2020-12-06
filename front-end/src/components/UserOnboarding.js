@@ -24,8 +24,8 @@ const UserOnboardingArray = [
 
 export default function UserOnboarding() {
     return (
-        <div className='min-vh-100 overflow-hidden'>
-            <div className='row justify-content-end h-100 px-md-5'>
+        <div className='min-vh-93 d-flex flex-column justify-content-end onboarding-bg'>
+            <div>
                 <div
                     id='carouselExampleIndicators'
                     className='w-100 carousel slide my-auto'
@@ -51,35 +51,39 @@ export default function UserOnboarding() {
                             );
                         })}
                     </div>
-                    {/* <a
-                    className='carousel-control-prev'
-                    href='#carouselExampleIndicators'
-                    role='button'
-                    data-slide='prev'
-                >
-                    <span
-                        className='carousel-control-prev-icon'
-                        aria-hidden='true'
-                    ></span>
-                    <span className='sr-only'>Previous</span>
-                </a>
-                <a
-                    className='carousel-control-next'
-                    href='#carouselExampleIndicators'
-                    role='button'
-                    data-slide='next'
-                >
-                    <span
-                        className='carousel-control-next-icon'
-                        aria-hidden='true'
-                    ></span>
-                    <span className='sr-only'>Next</span>
-                </a> */}
+                    <div className='d-none d-md-block'>
+                        <a
+                            className='carousel-control-prev'
+                            href='#carouselExampleIndicators'
+                            role='button'
+                            data-slide='prev'
+                        >
+                            <span
+                                className='carousel-control-prev-icon'
+                                aria-hidden='true'
+                            ></span>
+                            <span className='sr-only'>Previous</span>
+                        </a>
+                        <a
+                            className='carousel-control-next'
+                            href='#carouselExampleIndicators'
+                            role='button'
+                            data-slide='next'
+                        >
+                            <span
+                                className='carousel-control-next-icon'
+                                aria-hidden='true'
+                            ></span>
+                            <span className='sr-only'>Next</span>
+                        </a>
+                    </div>
                 </div>
-                <div className='w-100 m-5 pt-3 pt-md-1'>
+            </div>
+            <div className='bg-white px-md-5'>
+                <div className='m-5 pb-md-3 pt-md-3'>
                     <Link to='/login' className='no-underline'>
                         <button
-                            className='btn mx-auto start-btn d-block col-5'
+                            className='btn mx-auto start-btn d-block'
                             type='submit'
                         >
                             Get Started
@@ -94,11 +98,13 @@ export default function UserOnboarding() {
 function UserOnboardingContent({ id, title, desc }) {
     return (
         <div className={id === 1 ? "carousel-item active" : "carousel-item"}>
-            <div className='w-100 user-select-none bg-container'>
+            <div className='w-100 user-select-none'>
                 <figure className={"data-rafiki-" + id}></figure>
-                <div className=' text-center m-0 dark-blue-text'>
-                    <div className='mt-5 title'>{title}</div>
-                    <div className='mt-3 m-4 onboarding-desc'>{desc}</div>
+                <div className=' text-center px-md-5 m-0 dark-blue-text'>
+                    <div className='mt-5 mx-auto title'>{title}</div>
+                    <div className='m-4 mb-3 mb-md-4 mx-auto onboarding-desc'>
+                        {desc}
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,7 +116,7 @@ function UserOnboardingLi({ id }) {
         <li
             data-target='#carouselExampleIndicators'
             data-slide-to={id - 1}
-            className={id === 1 ? "m-2 m-md-3 active" : "m-2 m-md-3"}
+            className={id === 1 ? "m-2 mb-3 m-md-3 active" : "m-2 mb-3 m-md-3"}
         >
             <div></div>
         </li>

@@ -160,6 +160,10 @@ code {
     opacity: 0.5;
 }
 
+.min-vh-93 {
+    min-height: 93vh !important;
+}
+
 .no-underline,
 .no-underline:hover {
     text-decoration: none;

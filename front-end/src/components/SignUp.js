@@ -43,12 +43,12 @@ function SignUp() {
     }
 
     return (
-        <div className='log-page user-select-none overflow-hidden min-vh-100 bg-container'>
+        <div className='log-page user-select-none overflow-hidden min-vh-100 log-bg'>
             <div className='mx-auto m-5 log-page-title'>
                 <TitleSVG />
             </div>
             <div className='row px-md-5'>
-                <div className='col-12 col-md-6 pt-3 order-md-2'>
+                <div className='col-12 col-md-6 order-md-2 px-xl-5'>
                     <div className='d-flex justify-content-center mx-auto w-75'>
                         <div className='dark-blue-text-active'>Student</div>
                         <span
