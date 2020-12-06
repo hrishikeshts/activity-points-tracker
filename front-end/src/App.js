@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Profile from "./components/Profile";
 import Logout from "./components/Logout";
 import ShitCheck from "./components/ShitCheck";
+import Activity from "./components/Activity";
 
 // import Checkout from './components/Checkout';
 // import Products from './components/Products'
@@ -27,6 +28,7 @@ class App extends Component {
                     <Route path='/shit' component={ShitCheck} />
                     <Route path='/home' component={Home} />
                     <Route path='/profile' component={Profile} />
+                    <Route path='/activity' component={Activity} />
                     {/* <Route  path="/profile" component={Profile}/>
           <Route path="/checkout" component={Checkout}/>
           <Route path="/payment" component={Payment}/>
