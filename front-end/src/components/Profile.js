@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Profile(props){
 
-    const [details, setDetails] = useState({});
+    const [details, setDetails] = useState([]);
     const u = props.location.state.username;
 
     useEffect(() => {
@@ -19,6 +19,8 @@ function Profile(props){
             // console.log(response.data);
         });
     }, []);
+
+    
 
     return (
         <div>

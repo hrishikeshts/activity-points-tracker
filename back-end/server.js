@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
+const activity = require('./models/activity');
 require("dotenv").config();
 
 //MULTER
@@ -59,7 +60,8 @@ app.use(express.json());
 // app.use(multer({storage:filestorage,fileFilter:fileFilter}).single('data'));
 
 const verifyJWT = (req,res,next) => {
-    const token = req.headers["x-access-token"];
+    // const token = req.headers["x-access-token"];
+    const token = req.get("x-access-token");
 
     if(!token) {
         res.send("NO TOKEN FOUND!!");
@@ -152,9 +154,65 @@ app.post('/login',(req,res)=>{
     
 });
 
+
+app.post('/activity',verifyJWT,(req,res,next)=>{
+
+
+    activity.create({
+
+        username:req.body.username,
+        sem:req.body.sem,
+        activity:req.body.activity,
+        prize:req.body.prize,
+        level:req.body.level,
+
+    }).then(r=>{
+
+            res.status(200).json({message:"Activity added"})
+        })
+        .catch(err=>{
+            err.statusCode = 403;
+            err.message = "Something went wrong!!";
+            res.send(err.message);
+            next(err);
+      });
+    
+
+
+});
+
+app.get('/:username/:sem/activity',verifyJWT,(req,res,next)=>{
+
+
+    activity.findAll({
+        where: {
+          username: req.params.username,
+          sem:req.params.sem
+        }
+      }).then(activity=>{
+          
+
+        res.status(200).json(
+            activity
+        //     {
+
+            
+        //     // name:user.name,
+        //     // activity:activity.activity,
+        //     // prize:activity.prize,
+        //     // level:activity.level,
+        //     // image:user.image
+        // }
+        );
+
+    }).catch(err=>{console.log(err)})
+
+});
+
 app.get('/isAuth', verifyJWT ,(req, res) => {
     res.send("User Is Authenticated");
 });
+
 
 // app.get('/login', (req, res) => {
 //     if (req.session.user){
