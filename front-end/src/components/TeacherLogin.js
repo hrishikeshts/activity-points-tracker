@@ -3,43 +3,42 @@ import { Link, Redirect } from "react-router-dom";
 import TitleSVG from "../TitleSVG";
 import Axios from "axios";
 
-function Login() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [access, setAccess] = useState(false);
-    const [message, setMessage] = useState("");
+export default function TeacherLogin() {
+    // const [username, setUsername] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [access, setAccess] = useState(false);
+    // const [message, setMessage] = useState("");
 
-    // Axios.defaults.withCredentials = true;
+    // // Axios.defaults.withCredentials = true;
 
-    const login = (e) => {
-        e.preventDefault();
+    // const login = (e) => {
+    //     e.preventDefault();
 
-        Axios.post("http://localhost:8001/login", {
-            username: username,
-            password: password,
-        }).then((response) => {
-            if (response.data.auth) {
-                localStorage.setItem("token", response.data.token);
+    //     Axios.post("http://localhost:8001/login", {
+    //         username: username,
+    //         password: password,
+    //     }).then((response) => {
+    //         if (response.data.auth) {
+    //             localStorage.setItem("token", response.data.token);
+    //             localStorage.setItem("username", username);
+    //             setAccess(true);
+    //         } else {
+    //             setAccess(false);
+    //             setMessage(response.data.message);
+    //         }
+    //     });
+    // };
 
-                localStorage.setItem("user",username);
-                setAccess(true);
-            } else {
-                setAccess(false);
-                setMessage(response.data.message);
-            }
-        });
-    };
-
-    if (access) {
-        return (
-            <Redirect
-                to={{
-                    pathname: "/home",
-                    state: { username: username }, // your data array of objects
-                }}
-            />
-        );
-    }
+    // if (access) {
+    //     return (
+    //         <Redirect
+    //             to={{
+    //                 pathname: "/home",
+    //                 state: { username: username }, // your data array of objects
+    //             }}
+    //         />
+    //     );
+    // }
 
     return (
         <div className='log-page user-select-none overflow-hidden min-vh-100 log-bg'>
@@ -49,29 +48,15 @@ function Login() {
             <div className='row px-md-5'>
                 <div className='col-12 col-md-6 order-md-2 px-xl-5'>
                     <div className='d-flex justify-content-center mx-auto w-75'>
-                        <div className='dark-blue-text-active'>Student</div>
                         <div className='dark-blue-text'>
-                            <Link to='/teacher-login' draggable='false'>
-                                Teacher
+                            <Link to='/login' draggable='false'>
+                                Student
                             </Link>
                         </div>
+                        <div className='dark-blue-text-active'>Teacher</div>
                     </div>
                     <div className='mx-auto py-4 log-box-main'>
-                        {/* <div
-                    className='log-title'
-                    style={{ backgroundColor: "#fff", color: "#D92027" }}
-                >
-                    <b>LogIn</b>
-                </div> */}
-                        {/* <div className='sign-title'>
-                    <Link
-                        to='/signup'
-                        style={{ color: "#fff", textDecoration: "none" }}
-                    >
-                        <b>Sign Up</b>
-                    </Link>
-                </div> */}
-                        <form
+                        {/* <form
                             className='mx-auto form-group col-10'
                             onSubmit={login}
                         >
@@ -114,21 +99,18 @@ function Login() {
                                     {message}
                                 </p>
                             </div>
-                        </form>
+                        </form> */}
                     </div>
                     <div className='text-center m-4 onboarding-desc'>
-                        Don't have an account?&nbsp;
-                        <Link to='/signup' draggable='false'>
-                            Sign up
-                        </Link>
+                        Are you a student?&nbsp;
+                        <Link to='/login'>Log in</Link>&nbsp;or&nbsp;
+                        <Link to='/signup'>Sign up</Link>
                     </div>
                 </div>
                 <div className='col-12 col-md-6 order-md-1'>
-                    <figure className='opa-50 login-data-rafiki mt-auto'></figure>
+                    <figure className='opa-50 teacher-data-rafiki mt-auto'></figure>
                 </div>
             </div>
         </div>
     );
 }
-
-export default Login;

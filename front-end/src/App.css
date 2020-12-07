@@ -16,6 +16,12 @@
     background: #eef2ff;
 }
 
+.dark-blue-text a,
+.dark-blue-text a:hover {
+    color: #232e71;
+    text-decoration: none;
+}
+
 .log-box-main {
     background: #eef2ff;
     border-radius: 20px;
@@ -72,6 +78,7 @@
     background: url("./graphics/Data-rafiki-2.png");
 }
 
+
 .data-rafiki-3 {
     background: url("./graphics/Data-rafiki-3.png");
 }
@@ -80,7 +87,8 @@
 .data-rafiki-1,
 .data-rafiki-2,
 .data-rafiki-3,
-.login-data-rafiki {
+.login-data-rafiki,
+.teacher-data-rafiki {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -95,7 +103,8 @@
     background-position: bottom;
 }
 
-.login-data-rafiki {
+.login-data-rafiki,
+.teacher-data-rafiki {
     height: 70vw;
 }
 
@@ -107,7 +116,8 @@
         background-position: bottom;
     }
 
-    .login-data-rafiki {
+    .login-data-rafiki,
+    .teacher-data-rafiki {
         height: 400px;
     }
 }
