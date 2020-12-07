@@ -3,8 +3,9 @@ import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import UserOnboarding from "./components/UserOnboarding";
 import Login from "./components/Login";
+import TeacherLogin from "./components/TeacherLogin";
 import SignUp from "./components/SignUp";
-import Home from './components/Home';
+import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Logout from "./components/Logout";
 import ShitCheck from "./components/ShitCheck";
@@ -21,9 +22,9 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    
-                    <Route exact path='/' component={UserOnboarding}/>
+                    <Route exact path='/' component={UserOnboarding} />
                     <Route path='/login' component={Login} />
+                    <Route path='/teacher-login' component={TeacherLogin} />
                     <Route path='/signup' component={SignUp} />
                     <Route path='/shit' component={ShitCheck} />
                     <Route path='/home' component={Home} />

@@ -54,7 +54,7 @@ function SignUp() {
                         <span
                             className='d-block dark-blue-text opa-50'
                             data-toggle='tooltip'
-                            title='Contact admin for creating account'
+                            title='Create account for students only'
                         >
                             Teacher
                         </span>
@@ -152,7 +152,9 @@ function SignUp() {
                     </div>
                     <div className='text-center m-4 onboarding-desc'>
                         Already have an account?&nbsp;
-                        <Link to='/login'>Log in</Link>
+                        <Link to='/login' draggable='false'>
+                            Log in
+                        </Link>
                     </div>
                 </div>
                 <div className='col-12 col-md-6 order-md-1'>
