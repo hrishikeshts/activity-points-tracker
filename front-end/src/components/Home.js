@@ -1,6 +1,6 @@
 import React ,{useState} from 'react';
 import Select from 'react-select';
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
 import axios from 'axios'
  
 
@@ -8,7 +8,12 @@ import axios from 'axios'
 
 function Home(props){
     
-    const data = props.location.state.username;
+    const data = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    if(!token || !data){
+      return <Redirect to="/login"/>;
+    }
     
 
     return (
@@ -16,24 +21,17 @@ function Home(props){
               <div>
                 Welcome Mahn...!!
               </div>
-              <Link to={{
-                pathname: "/profile",
-                state: { username: data }
-                }}>Profile</Link><br/><br/>
+              <Link to='/profile'>Profile</Link><br/><br/>
 
-              <Link to={{
-                pathname: "/activity",
-                state: { username: data , sem:"S1"}
-                }} onClick={ () =>{
+              <Link to='/activity'
+                  onClick={ () =>{
                   localStorage.setItem("user", data);
                   localStorage.setItem("sem", "S1");
                 }
                  
                 }>S1</Link><br/><br/>
-              <Link to={{
-                pathname: "/activity",
-                state: { username: data , sem:"S2"}
-                }} onClick={ () =>{
+              <Link to='/activity'
+                  onClick={ () =>{
                   localStorage.setItem("user", data);
                   localStorage.setItem("sem", "S2");
                 }

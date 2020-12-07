@@ -20,7 +20,8 @@ function Login() {
         }).then((response) => {
             if (response.data.auth) {
                 localStorage.setItem("token", response.data.token);
-                localStorage.setItem("username", username);
+
+                localStorage.setItem("user",username);
                 setAccess(true);
             } else {
                 setAccess(false);

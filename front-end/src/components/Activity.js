@@ -15,6 +15,7 @@ function Activity(props) {
     const user = localStorage.getItem("user");
     // const sem = props.location.state.sem;
     const semR = localStorage.getItem("sem");
+    const token = localStorage.getItem("token")
 
     useEffect(() => {
         Axios.get(`http://localhost:8001/${user}/${semR}/activity`, {
@@ -61,9 +62,9 @@ function Activity(props) {
             // }
         });
     };
-    // if (access) {
-    //     return <Redirect to="/home"/>;
-    // }
+    if (!token) {
+        return <Redirect to="/login"/>;
+    }
 
     return (
         <div className='log-page user-select-none overflow-hidden min-vh-100 log-bg'>
