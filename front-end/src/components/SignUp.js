@@ -24,6 +24,7 @@ function SignUp() {
         }).then((response) => {
             if (response.data.auth) {
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user", username);
                 setAccess(true);
             } else {
                 setAccess(false);
@@ -34,10 +35,7 @@ function SignUp() {
     if (access) {
         return (
             <Redirect
-                to={{
-                    pathname: "/home",
-                    state: { username: username }, // your data array of objects
-                }}
+                to='/home'
             />
         );
     }
@@ -134,7 +132,7 @@ function SignUp() {
                             <div className='my-2'>
                                 <button
                                     className='btn mx-auto start-btn d-block col-6'
-                                    onClick={register}
+                                    type="submit"
                                 >
                                     Create account
                                 </button>

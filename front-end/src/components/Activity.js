@@ -16,6 +16,7 @@ function Activity(props){
     const user = localStorage.getItem("user");
     // const sem = props.location.state.sem;
     const semR = localStorage.getItem("sem");
+    const token = localStorage.getItem("token")
     
 
     useEffect(() => {
@@ -64,9 +65,9 @@ function Activity(props){
             // }
         });
     };
-    // if (access) {
-    //     return <Redirect to="/home"/>;
-    // }
+    if (!token) {
+        return <Redirect to="/login"/>;
+    }
 
     return (
         <div className='log-page user-select-none'>
