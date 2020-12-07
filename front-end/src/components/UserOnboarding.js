@@ -57,6 +57,7 @@ export default function UserOnboarding() {
                             href='#carouselExampleIndicators'
                             role='button'
                             data-slide='prev'
+                            draggable='false'
                         >
                             <span
                                 className='carousel-control-prev-icon'
@@ -69,6 +70,7 @@ export default function UserOnboarding() {
                             href='#carouselExampleIndicators'
                             role='button'
                             data-slide='next'
+                            draggable='false'
                         >
                             <span
                                 className='carousel-control-next-icon'
