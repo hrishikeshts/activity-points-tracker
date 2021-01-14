@@ -78,14 +78,11 @@
     background: url("./graphics/Data-rafiki-2.png");
 }
 
-<<<<<<< HEAD
-.data-rafiki-3 {
-    background: url("./graphics/Data-rafiki-3.png");
-=======
+
 .data-rafiki-3,
 .teacher-data-rafiki {
     background: url("./graphics/data-rafiki-3.png");
->>>>>>> a56d5e721307346881424ac5c68ea3ff7d277d92
+
 }
 
 .data-rafiki,

@@ -15,11 +15,6 @@ function Activity(props) {
     const user = localStorage.getItem("user");
     // const sem = props.location.state.sem;
     const semR = localStorage.getItem("sem");
-<<<<<<< HEAD
-    const token = localStorage.getItem("token")
-    
-=======
->>>>>>> a56d5e721307346881424ac5c68ea3ff7d277d92
 
     useEffect(() => {
         Axios.get(`http://localhost:8001/${user}/${semR}/activity`, {
