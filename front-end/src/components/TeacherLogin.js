@@ -4,41 +4,37 @@ import TitleSVG from "../TitleSVG";
 import Axios from "axios";
 
 export default function TeacherLogin() {
-    // const [username, setUsername] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [access, setAccess] = useState(false);
-    // const [message, setMessage] = useState("");
 
-    // // Axios.defaults.withCredentials = true;
+    const [username, setUsername] = useState("");
+    const [access, setAccess] = useState(false);
+    const [message, setMessage] = useState("");
 
-    // const login = (e) => {
-    //     e.preventDefault();
+    const login = (e) => {
+        e.preventDefault();
 
-    //     Axios.post("http://localhost:8001/login", {
-    //         username: username,
-    //         password: password,
-    //     }).then((response) => {
-    //         if (response.data.auth) {
-    //             localStorage.setItem("token", response.data.token);
-    //             localStorage.setItem("username", username);
-    //             setAccess(true);
-    //         } else {
-    //             setAccess(false);
-    //             setMessage(response.data.message);
-    //         }
-    //     });
-    // };
+        Axios.post("http://localhost:8001/admin/login", {
 
-    // if (access) {
-    //     return (
-    //         <Redirect
-    //             to={{
-    //                 pathname: "/home",
-    //                 state: { username: username }, // your data array of objects
-    //             }}
-    //         />
-    //     );
-    // }
+            username: username
+
+        }).then((response) => {
+            if (response.data.auth) {
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user", username);
+                setAccess(true);
+            } else {
+                setAccess(false);
+                setMessage(response.data.message);
+            }
+        });
+    };
+
+    if (access) {
+        return (
+            <Redirect
+                to='/admindash'
+            />
+        );
+    }
 
     return (
         <div className='log-page user-select-none overflow-hidden min-vh-100 log-bg'>
@@ -56,7 +52,7 @@ export default function TeacherLogin() {
                         <div className='dark-blue-text-active'>Teacher</div>
                     </div>
                     <div className='mx-auto py-4 log-box-main'>
-                        {/* <form
+                        <form
                             className='mx-auto form-group col-10'
                             onSubmit={login}
                         >
@@ -64,14 +60,14 @@ export default function TeacherLogin() {
                                 <input
                                     className='form-control px-3 mb-4'
                                     type='text'
-                                    placeholder='Username'
+                                    placeholder='Teacher ID'
                                     name='username'
                                     required
                                     onChange={(e) => {
                                         setUsername(e.target.value);
                                     }}
                                 ></input>
-                                <input
+                                {/* <input
                                     className='form-control px-3 mt-4'
                                     type='password'
                                     placeholder='Password'
@@ -81,7 +77,7 @@ export default function TeacherLogin() {
                                         setPassword(e.target.value);
                                     }}
                                 ></input>
-                            </div>
+                            </div> */}
                             <div className='my-2'>
                                 <button
                                     className='btn mx-auto start-btn d-block col-6'
@@ -99,7 +95,8 @@ export default function TeacherLogin() {
                                     {message}
                                 </p>
                             </div>
-                        </form> */}
+                            </div>
+                        </form>
                     </div>
                     <div className='text-center m-4 onboarding-desc'>
                         Are you a student?&nbsp;

@@ -1,42 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import TitleSVG from "../TitleSVG";
 import Axios from "axios";
 
-function Login() {
+function TeachSign() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [access, setAccess] = useState(false);
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [access, setAccess] = useState();
     const [message, setMessage] = useState("");
 
-    // Axios.defaults.withCredentials = true;
-
-    const login = (e) => {
+    const register = (e) => {
         e.preventDefault();
 
-        Axios.post("http://localhost:8001/login", {
-            username: username,
-            password: password,
+        Axios.post("http://localhost:8001/admin/signup", {
+            username: username
+            
         }).then((response) => {
             if (response.data.auth) {
                 localStorage.setItem("token", response.data.token);
-
-                localStorage.setItem("user",username);
+                localStorage.setItem("user", username);
                 setAccess(true);
             } else {
                 setAccess(false);
-                setMessage(response.data.message);
+                setMessage(response.data);
             }
         });
     };
-
     if (access) {
         return (
             <Redirect
-                to={{
-                    pathname: "/home",
-                    state: { username: username }, // your data array of objects
-                }}
+                to='/admindash'
             />
         );
     }
@@ -50,71 +46,79 @@ function Login() {
                 <div className='col-12 col-md-6 order-md-2 px-xl-5'>
                     <div className='d-flex justify-content-center mx-auto w-75'>
                         <div className='dark-blue-text-active'>Student</div>
-                        <div className='dark-blue-text'>
-                            <Link to='/teacher-login' draggable='false'>
-                                Teacher
-                            </Link>
-                        </div>
+                        <span
+                            className='d-block dark-blue-text opa-50'
+                            data-toggle='tooltip'
+                            title='Create account for students only'
+                        >
+                            Teacher
+                        </span>
                     </div>
                     <div className='mx-auto py-4 log-box-main'>
+                        {/* <div className='log-title'>
+                    <Link
+                        to='/'
+                        style={{ color: "#fff", textDecoration: "none" }}
+                    >
+                        <b>LogIn</b>
+                    </Link>
+                </div>
+                <div
+                    className='sign-title'
+                    style={{ backgroundColor: "#fff", color: "#D92027" }}
+                >
+                    <b>SignUp</b>
+                </div> */}
                         <form
                             className='mx-auto form-group col-10'
-                            onSubmit={login}
+                            onSubmit={register}
                         >
                             <div className='py-4'>
+                                
                                 <input
-                                    className='form-control px-3 mb-4'
+                                    className='form-control px-3 my-4'
                                     type='text'
                                     placeholder='Username'
-                                    name='username'
-                                    required
+                                    name='name'
                                     onChange={(e) => {
                                         setUsername(e.target.value);
                                     }}
-                                ></input>
-                                <input
-                                    className='form-control px-3 mt-4'
-                                    type='password'
-                                    placeholder='Password'
-                                    name='password'
                                     required
-                                    onChange={(e) => {
-                                        setPassword(e.target.value);
-                                    }}
                                 ></input>
+                                
                             </div>
                             <div className='my-2'>
                                 <button
                                     className='btn mx-auto start-btn d-block col-6'
-                                    type='submit'
+                                    type="submit"
                                 >
-                                    Sign in
+                                    Create account
                                 </button>
-                                <p
-                                    style={{
-                                        color: "red",
-                                        textAlign: "center",
-                                        fontSize: 12,
-                                    }}
-                                >
-                                    {message}
-                                </p>
                             </div>
+                            <p
+                                style={{
+                                    color: "red",
+                                    fontSize: 12,
+                                    textAlign: "center",
+                                }}
+                            >
+                                {message}
+                            </p>
                         </form>
                     </div>
                     <div className='text-center m-4 onboarding-desc'>
-                        Don't have an account?&nbsp;
-                        <Link to='/signup' draggable='false'>
-                            Sign up
+                        Already have an account?&nbsp;
+                        <Link to='/login' draggable='false'>
+                            Log in
                         </Link>
                     </div>
                 </div>
                 <div className='col-12 col-md-6 order-md-1'>
-                    <figure className='opa-50 login-data-rafiki mt-auto'></figure>
+                    <figure className='opa-50 login-data-rafiki'></figure>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Login;
+export default TeachSign;

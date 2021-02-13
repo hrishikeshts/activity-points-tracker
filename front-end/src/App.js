@@ -10,6 +10,11 @@ import Profile from "./components/Profile";
 import Logout from "./components/Logout";
 import ShitCheck from "./components/ShitCheck";
 import Activity from "./components/Activity";
+import AdminDash from "./components/AdminDash";
+import TeachSign from "./components/TeachSign";
+import StudentInfo from "./components/StudentInfo";
+import StudentSem from "./components/StudentSem";
+import ActivityList from "./components/ActivityList";
 
 // import Checkout from './components/Checkout';
 // import Products from './components/Products'
@@ -30,7 +35,12 @@ class App extends Component {
                     <Route path='/home' component={Home} />
                     <Route path='/profile' component={Profile} />
                     <Route path='/activity' component={Activity} />
-                    {/* <Route  path="/profile" component={Profile}/>
+                    <Route path='/admindash' component={AdminDash} />
+                    <Route path='/adminsign' component={TeachSign} />
+                    <Route path='/studentsem' component={StudentSem} />
+                    <Route path='/studentinfo' component={StudentInfo} />
+                    <Route path='/activitylist' component={ActivityList} />
+                    {/* 
           <Route path="/checkout" component={Checkout}/>
           <Route path="/payment" component={Payment}/>
           <Route path="/confirm" component={Confirmation}/>

@@ -17,6 +17,10 @@ const user = sequelize.define('user',{
         
 
     },
+    fullname: {
+        type:Sequelize.STRING,
+        allowNull:false
+    },
     password: {
         type:Sequelize.STRING,
         allowNull:false
@@ -30,6 +34,10 @@ const user = sequelize.define('user',{
     //     allowNull:false
     // },
     address: {
+        type:Sequelize.STRING,
+        allowNull:false
+    },
+    currsem: {
         type:Sequelize.STRING,
         allowNull:false
     },

@@ -30,7 +30,11 @@ const fileFilter=(req,file,cb)=>{
 
 }
 app.use(bodyparser.json());
+
 app.use('/images',express.static(path.join(__dirname,'images')));
+
+app.use('/certi',multer({storage:Storagecerti,fileFilter:fileFiltercerti}).single('certificatedata'));
+app.use('/certificates',express.static(path.join(__dirname,'certificates')));
 
 app.use(multer({storage:filestorage,fileFilter:fileFilter}).single('data'));
 app.use(function(req,res,next){

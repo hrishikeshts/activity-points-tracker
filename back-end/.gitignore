@@ -1,4 +1,7 @@
 .env
 
-# dependencies
+#dependencies
 /node_modules
+
+#files
+/certificates

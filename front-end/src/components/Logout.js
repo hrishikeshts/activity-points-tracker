@@ -1,30 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import TitleSVG from "../TitleSVG";
 
 class Logout extends React.Component {
     constructor(props) {
         super(props);
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-        this.state = {
-        };
+        this.state = {};
     }
 
     render() {
         return (
-
-        <div className="logged-out">
-            <div>
-                <h2><b>Logged Out!!!</b></h2>
-                <Link to="/login" 
-                    style={{textDecoration:"none",backgroundColor:"#f1f1f1",color:"#101010"}}>
-                        {"<< "}Go to Login Page
-                </Link>
+            <div className='container user-select-none'>
+                <div className='my-5 logged-out d-flex justify-content-center user-select-none'>
+                    <div className='d-flex flex-column align-items-center'>
+                        <div className='log-page-title'>
+                            <TitleSVG />
+                        </div>
+                        <h5 className='mt-3 mb-4 grey'>
+                            You've been logged out!
+                        </h5>
+                        <Link to='/login' className='btn start-btn'>
+                            Go to Login Page
+                        </Link>
+                    </div>
+                </div>
+                <div className='logout-bg'></div>
             </div>
-        </div>
         );
     }
 }
-
 
 export default Logout;

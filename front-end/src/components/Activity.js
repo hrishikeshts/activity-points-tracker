@@ -15,6 +15,7 @@ function Activity(props) {
     const user = localStorage.getItem("user");
     // const sem = props.location.state.sem;
     const semR = localStorage.getItem("sem");
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         Axios.get(`http://localhost:8001/${user}/${semR}/activity`, {
@@ -27,6 +28,8 @@ function Activity(props) {
         });
     }, []);
 
+    // const uploadPoint = () =>{  
+    // }
     const uploadDetails = (e) => {
         const token = localStorage.getItem("token");
 
@@ -62,7 +65,7 @@ function Activity(props) {
         });
     };
     if (!token) {
-        return <Redirect to="/login"/>;
+        return <Redirect to='/login' />;
     }
 
     return (
@@ -133,16 +136,16 @@ function Activity(props) {
                                 {message}
                             </p>
                         </form>
-                        <div style={{ textAlign: "center" }}>
+                        {/* <div style={{ textAlign: "center" }}>
                             {details.map((item) => (
                                 <div key={item.id}>
                                     <p>{item.activity}</p>
-                                    {/* <p>{item.sem}</p>
+                                    <p>{item.sem}</p>
                     <p>{item.prize}</p>
-                    <p>{item.level}</p> */}
+                    <p>{item.level}</p>
                                 </div>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className='col-12 col-md-6 order-md-1'>

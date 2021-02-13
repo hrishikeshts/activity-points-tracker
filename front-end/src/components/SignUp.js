@@ -2,25 +2,42 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import TitleSVG from "../TitleSVG";
 import Axios from "axios";
+import Select from "react-select";
+
+const cursem = [
+    { value: "S1", label: "S1" },
+    { value: "S2", label: "S2" },
+    { value: "S3", label: "S3" },
+    { value: "S4", label: "S4" },
+    { value: "S5", label: "S5" },
+    { value: "S6", label: "S6" },
+    { value: "S7", label: "S7" },
+    { value: "S8", label: "S8" },
+    
+];
 
 function SignUp() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [fullname, setFullname] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [access, setAccess] = useState();
     const [message, setMessage] = useState("");
+    const [currsem, setCurrsem] = useState("");
 
     const register = (e) => {
         e.preventDefault();
 
         Axios.post("http://localhost:8001/signup", {
             username: username,
+            fullname:fullname,
             password: password,
             email: email,
             phoneno: phone,
             address: address,
+            currsem:currsem.value
         }).then((response) => {
             if (response.data.auth) {
                 localStorage.setItem("token", response.data.token);
@@ -88,6 +105,16 @@ function SignUp() {
                                     required
                                 ></input>
                                 <input
+                                    className='form-control px-3 mb-4'
+                                    type='text'
+                                    placeholder='Full Name'
+                                    name='fullname'
+                                    onChange={(e) => {
+                                        setFullname(e.target.value);
+                                    }}
+                                    required
+                                ></input>
+                                <input
                                     className='form-control px-3 my-4'
                                     type='text'
                                     placeholder='Username'
@@ -107,6 +134,11 @@ function SignUp() {
                                     }}
                                     required
                                 ></input>
+                                <Select
+                                    defaultValue={currsem}
+                                    onChange={setCurrsem}
+                                    options={cursem}
+                                />
                                 <input
                                     className='form-control px-3 my-4'
                                     type='text'

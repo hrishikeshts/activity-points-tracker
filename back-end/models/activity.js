@@ -17,7 +17,7 @@ const activity = sequelize.define('activity',{
         
 
     },
-    activity: {
+    title: {
         type:Sequelize.STRING,
         allowNull:false
     },
@@ -29,6 +29,10 @@ const activity = sequelize.define('activity',{
     //     type:Sequelize.STRING,
     //     allowNull:false
     // },
+    category: {
+        type:Sequelize.STRING,
+        allowNull:false
+    },
     prize: {
         type:Sequelize.STRING,
         allowNull:false
@@ -38,10 +42,21 @@ const activity = sequelize.define('activity',{
         allowNull:false
 
     },
-    // image: {
-    //     type:Sequelize.STRING,
+    point: {
+        type:Sequelize.INTEGER,
+        allowNull:false
+
+    },
+    verify: {
+        type:Sequelize.BOOLEAN,
+        allowNull:false
+
+    },
+    image: {
+        type:Sequelize.STRING,
+        allowNull:false
     
-    // }
+    }
 });
 
 module.exports=activity;
