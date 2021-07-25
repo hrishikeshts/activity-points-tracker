@@ -68,7 +68,7 @@ app.use('/certi',multer({storage:Storagecerti,fileFilter:fileFiltercerti}).singl
 app.use('/certificates',express.static(path.join(__dirname,'certificates')));
 
 // app.use('/images',express.static(path.join(__dirname,'images')));
-app.use(cors());
+app.use(Cors());
 
 app.use(cookieParser());
 // app.use(
@@ -89,7 +89,6 @@ app.use(
             secure: true,
             maxAge:60000
         },
-        store: new RedisStore(),
         secret: 'secret',
         saveUninitialized: true,
         resave: false
