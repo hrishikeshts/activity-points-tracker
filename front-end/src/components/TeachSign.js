@@ -15,7 +15,7 @@ function TeachSign() {
     const register = (e) => {
         e.preventDefault();
 
-        Axios.post("http://localhost:8001/admin/signup", {
+        Axios.post("/admin/signup", {
             username: username
             
         }).then((response) => {

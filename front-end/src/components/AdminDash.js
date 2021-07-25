@@ -10,14 +10,14 @@ function AdminDash() {
     const sem = "S1";
 
     // useEffect(() => {
-    //     Axios.get(`http://localhost:8001/admin/studentinfo`, {
+    //     Axios.get(`/admin/studentinfo`, {
     //         headers: {
     //             "x-access-token": localStorage.getItem("token"),
     //         },
     //     }).then((response) => {
     //         setDetails(response.data);
     //         // console.log(response.data[0]);
-    //         return Axios.get(`http://localhost:8001/${response.data[3].username}/${sem}/activity`, {
+    //         return Axios.get(`/${response.data[3].username}/${sem}/activity`, {
     //             headers: {
     //                 "x-access-token": localStorage.getItem("token"),
     //             },
@@ -28,7 +28,7 @@ function AdminDash() {
     //     });;
     // }, []);
     useEffect(() => {
-        Axios.get(`http://localhost:8001/admin/studentinfo`, {
+        Axios.get(`/admin/studentinfo`, {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             },

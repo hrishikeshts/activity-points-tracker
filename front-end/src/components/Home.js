@@ -26,7 +26,7 @@ function Home(props) {
 
     useEffect(() => {
         
-        Axios.get(`http://localhost:8001/${data}/sempoints`, {
+        Axios.get(`/${data}/sempoints`, {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             },

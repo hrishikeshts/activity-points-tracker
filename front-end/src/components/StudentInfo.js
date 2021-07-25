@@ -21,7 +21,7 @@ function StudentInfo() {
     const [isS8, setIsS8] = useState(false);
 
     useEffect(() => {
-        Axios.get(`http://localhost:8001/${user}/${semR}/activity`, {
+        Axios.get(`/${user}/${semR}/activity`, {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             },
@@ -118,7 +118,7 @@ function StudentInfo() {
                                                 className='btn start-btn'
                                                 onClick={() => {
                                                     window.open(
-                                                        `http://localhost:8001/${item.image}`
+                                                        `/${item.image}`
                                                     );
                                                 }}
                                             >
@@ -128,7 +128,7 @@ function StudentInfo() {
                                             <button
                                                 className={item.verify ?'m-2 btn start-btn d-none':'m-2 btn start-btn green-btn'  }
                                                 onClick={() => {
-                                                    Axios.post("http://localhost:8001/approval", {
+                                                    Axios.post("/approval", {
                                                             username: user,
                                                             sem:semR,
                                                             id: item.id,
@@ -156,7 +156,7 @@ function StudentInfo() {
                                 //     <button
                                 //         onClick={() => {
                                 //             window.open(
-                                //                 `http://localhost:8001/${item.image}`
+                                //                 `/${item.image}`
                                 //             );
                                 //         }}
                                 //     >

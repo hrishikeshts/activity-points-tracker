@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import UserOnboarding from "./components/UserOnboarding";
 import Login from "./components/Login";
@@ -21,6 +22,8 @@ import ActivityList from "./components/ActivityList";
 // import Confirmation from './components/Confirmation';
 // import Profile from './components/Profile';
 // import Payment from './components/Payment';
+
+axios.defaults.baseURL = "http://localhost:8001";
 
 class App extends Component {
     render() {

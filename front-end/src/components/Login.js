@@ -14,7 +14,7 @@ function Login() {
     const login = (e) => {
         e.preventDefault();
 
-        Axios.post("http://localhost:8001/login", {
+        Axios.post("/login", {
             username: username,
             password: password,
         }).then((response) => {

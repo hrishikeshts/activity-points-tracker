@@ -40,7 +40,7 @@ function Activity(props) {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        Axios.get(`http://localhost:8001/${user}/${semR}/activity`, {
+        Axios.get(`/${user}/${semR}/activity`, {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             },
@@ -83,7 +83,7 @@ function Activity(props) {
         for (var i=0; i<details.length;i++){
             total = total +details[i].point;
         }
-        Axios.post("http://localhost:8001/sempoints", {
+        Axios.post("/sempoints", {
             username: user,
             sem:semR,
             point:total+points
@@ -120,7 +120,7 @@ function Activity(props) {
         certificatedata.append("verify", false);
         certificatedata.append("certificatedata", image);
 
-        fetch(`http://localhost:8001/certi/activity`, {
+        fetch(`/certi/activity`, {
             method: "POST",
             headers: {
                 "x-access-token": localStorage.getItem("token"),
@@ -136,7 +136,7 @@ function Activity(props) {
             .catch((err) => console.log(err));
 
         // Axios.post(
-        //     `http://localhost:8001/activity`,
+        //     `/activity`,
         //     {
         //         username: user,
         //         sem: semR,

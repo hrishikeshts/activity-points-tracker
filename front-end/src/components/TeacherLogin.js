@@ -12,7 +12,7 @@ export default function TeacherLogin() {
     const login = (e) => {
         e.preventDefault();
 
-        Axios.post("http://localhost:8001/admin/login", {
+        Axios.post("/admin/login", {
 
             username: username
 

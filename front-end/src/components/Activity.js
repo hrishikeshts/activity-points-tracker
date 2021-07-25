@@ -18,7 +18,7 @@ function Activity(props) {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        Axios.get(`http://localhost:8001/${user}/${semR}/activity`, {
+        Axios.get(`/${user}/${semR}/activity`, {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             },
@@ -34,7 +34,7 @@ function Activity(props) {
         const token = localStorage.getItem("token");
 
         Axios.post(
-            `http://localhost:8001/activity`,
+            `/activity`,
             {
                 username: user,
                 sem: semR,

@@ -9,7 +9,7 @@ function StudentInfo(){
     const user = localStorage.getItem("student");
 
     useEffect(() => {
-        Axios.get(`http://localhost:8001/${user}/${semR}/activity`, {
+        Axios.get(`/${user}/${semR}/activity`, {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             },
@@ -29,7 +29,7 @@ function StudentInfo(){
                                     <p>{item.prize}</p>
                                     <p>{item.level}</p><br/><br/>
                                     <button onClick={() => {
-                                        window.open(`http://localhost:8001/${item.image}`);
+                                        window.open(`/${item.image}`);
                                     }} >View Certificate</button>
                                 </div>
                                 

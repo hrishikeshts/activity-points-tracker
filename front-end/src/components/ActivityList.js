@@ -27,7 +27,7 @@ export default function ActivityList() {
 
     useEffect(() => {
         var total = 0;
-        Axios.get(`http://localhost:8001/${user}/${semR}/activity`, {
+        Axios.get(`/${user}/${semR}/activity`, {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             },

@@ -4,7 +4,7 @@ import Axios from 'axios';
 function ShitCheck() {
 
     const userAuth = () =>{
-        Axios.get("http://localhost:8001/isAuth", {
+        Axios.get("/isAuth", {
             headers:{
                 "x-access-token": localStorage.getItem("token"),
             },

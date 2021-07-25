@@ -11,7 +11,7 @@ function Profile(props) {
     const u = localStorage.getItem("user");
 
     useEffect(() => {
-        Axios.get(`http://localhost:8001/${u}/user`, {
+        Axios.get(`/${u}/user`, {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
             },
