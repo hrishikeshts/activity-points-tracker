@@ -112,7 +112,7 @@ const verifyJWT = (req, res, next) => {
     if (!token) {
         res.send("NO TOKEN FOUND!!");
     } else {
-        jwt.verify(token, process.env.SECRET, (err, decoded) => {
+        jwt.verify(token, process.env.SECRET || "secret", (err, decoded) => {
             if (err) {
                 res.json({ auth: false, message: "Failed to Auth" });
             } else {
@@ -160,7 +160,7 @@ app.post("/signup", (req, res, next) => {
         })
             .then((r) => {
                 const username = user.username;
-                const token = jwt.sign({ username }, process.env.SECRET, {
+                const token = jwt.sign({ username }, process.env.SECRET || "secret", {
                     expiresIn: 7200,
                 });
                 res.status(200).json({
@@ -191,7 +191,7 @@ app.post("/login", (req, res) => {
                             const username = user.username;
                             const token = jwt.sign(
                                 { username },
-                                process.env.SECRET,
+                                process.env.SECRET || "secret",
                                 {
                                     expiresIn: 7200,
                                 }
@@ -220,7 +220,7 @@ app.post("/admin/login", (req, res) => {
         .then((admin) => {
             if (admin) {
                 const username = admin.username;
-                const token = jwt.sign({ username }, process.env.SECRET, {
+                const token = jwt.sign({ username }, process.env.SECRET || "secret", {
                     expiresIn: 7200,
                 });
                 // console.log(req.session.user);
@@ -240,7 +240,7 @@ app.post("/admin/signup", (req, res, next) => {
         })
         .then((r) => {
             const username = admin.username;
-            const token = jwt.sign({ username }, process.env.SECRET, {
+            const token = jwt.sign({ username }, process.env.SECRET || "secret", {
                 expiresIn: 7200,
             });
             res.status(200).json({

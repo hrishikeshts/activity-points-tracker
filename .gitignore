@@ -1,7 +1,12 @@
+# config vars
 .env
 
 #dependencies
 /node_modules
+
+#development
+/front-end
+/back-end
 
 #files
 /certificates
