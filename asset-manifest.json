@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3b54d85a.chunk.css",
+    "main.js": "/static/js/main.0b381b28.chunk.js",
+    "main.js.map": "/static/js/main.0b381b28.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7a094122.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7a094122.js.map",
+    "static/css/2.a5db5073.chunk.css": "/static/css/2.a5db5073.chunk.css",
+    "static/js/2.699bc12a.chunk.js": "/static/js/2.699bc12a.chunk.js",
+    "static/js/2.699bc12a.chunk.js.map": "/static/js/2.699bc12a.chunk.js.map",
+    "static/js/3.dec2e845.chunk.js": "/static/js/3.dec2e845.chunk.js",
+    "static/js/3.dec2e845.chunk.js.map": "/static/js/3.dec2e845.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.a5db5073.chunk.css.map": "/static/css/2.a5db5073.chunk.css.map",
+    "static/css/main.3b54d85a.chunk.css.map": "/static/css/main.3b54d85a.chunk.css.map",
+    "static/js/2.699bc12a.chunk.js.LICENSE.txt": "/static/js/2.699bc12a.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/log-bg.20fc081c.png",
+    "static/media/admin.css": "/static/media/Folder-rafiki.93cff3c5.svg",
+    "static/media/index.css": "/static/media/MazzardH-ThinItalic.56d0bfe9.woff2",
+    "static/media/UserOnboarding.css": "/static/media/onboarding-bg.997c148f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7a094122.js",
+    "static/css/2.a5db5073.chunk.css",
+    "static/js/2.699bc12a.chunk.js",
+    "static/css/main.3b54d85a.chunk.css",
+    "static/js/main.0b381b28.chunk.js"
+  ]
+}
