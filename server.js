@@ -68,26 +68,40 @@ app.use('/certi',multer({storage:Storagecerti,fileFilter:fileFiltercerti}).singl
 app.use('/certificates',express.static(path.join(__dirname,'certificates')));
 
 // app.use('/images',express.static(path.join(__dirname,'images')));
+app.use(cors());
+
+app.use(cookieParser());
+// app.use(
+//     session({
+//         key: "username",
+//         secret: "appu703453",
+//         resave: false,
+//         saveUninitialized: false,
+//         cookie: {
+//             expires: 60 * 60 * 24,
+//         },
+//     })
+// );
+
 app.use(
-    Cors({
-        origin: ["http://localhost:3000"],
-        methods: ["GET", "POST"],
-        credentials: true,
+    session({
+        cookie:{
+            secure: true,
+            maxAge:60000
+        },
+        store: new RedisStore(),
+        secret: 'secret',
+        saveUninitialized: true,
+        resave: false
     })
 );
 
-app.use(cookieParser());
-app.use(
-    session({
-        key: "username",
-        secret: "appu703453",
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            expires: 60 * 60 * 24,
-        },
-    })
-);
+app.use(function(req,res,next) {
+    if(!req.session) {
+        return next(new Error('Oh no')); //handle error
+    }
+    next(); //otherwise continue
+});
 
 app.use(express.json());
 // app.use(multer({storage:filestorage,fileFilter:fileFilter}).single('data'));
