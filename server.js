@@ -71,36 +71,36 @@ app.use('/certificates',express.static(path.join(__dirname,'certificates')));
 app.use(Cors());
 
 app.use(cookieParser());
-// app.use(
-//     session({
-//         key: "username",
-//         secret: "appu703453",
-//         resave: false,
-//         saveUninitialized: false,
-//         cookie: {
-//             expires: 60 * 60 * 24,
-//         },
-//     })
-// );
-
 app.use(
     session({
-        cookie:{
-            secure: true,
-            maxAge:60000
+        key: "username",
+        secret: "appu703453",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            expires: 60 * 60 * 24,
         },
-        secret: 'secret',
-        saveUninitialized: true,
-        resave: false
     })
 );
 
-app.use(function(req,res,next) {
-    if(!req.session) {
-        return next(new Error('Oh no')); //handle error
-    }
-    next(); //otherwise continue
-});
+// app.use(
+//     session({
+//         cookie:{
+//             secure: true,
+//             maxAge:60000
+//         },
+//         secret: 'secret',
+//         saveUninitialized: true,
+//         resave: false
+//     })
+// );
+
+// app.use(function(req,res,next) {
+//     if(!req.session) {
+//         return next(new Error('Oh no')); //handle error
+//     }
+//     next(); //otherwise continue
+// });
 
 app.use(express.json());
 // app.use(multer({storage:filestorage,fileFilter:fileFilter}).single('data'));
